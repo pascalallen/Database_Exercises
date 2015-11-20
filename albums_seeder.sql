@@ -1,5 +1,5 @@
 USE codeup_test_db;
-INSERT INTO albums (arist, name, release_date, sales, genre)
+INSERT INTO albums (artist, name, release_date, sales, genre)
 VALUES  ('Michael Jackson', 'Thriller', 1982, 42.4, 'Pop, rock, R&B'),
         ('Pink Floyd', 'The Dark Side of the Moon', 1973, 22.7, 'Progressive rock'),
         ('Whitney Houston / Various artists', 'The Bodyguard', 1992, 27.4, 'Soundtrack/R&B, soul, pop'),
