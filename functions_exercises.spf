@@ -78,12 +78,12 @@
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
-			<string>SELECT * 
+			<string>SELECT count(*), gender
 FROM employees
 WHERE first_name ='Irena'
 OR first_name = 'Vidya'
 OR first_name = 'Maya'
-ORDER BY first_name DESC;
+group BY gender;
 
 SELECT * 
 FROM employees
@@ -140,6 +140,30 @@ ORDER BY birth_date ASC, hire_date DESC;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>SELECT count(*), gender
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+group BY gender</string>
+		<string>SELECT count(*) 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+group BY gender</string>
+		<string>SELECT * 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+ORDER BY first_name DESC, last_name DESC</string>
+		<string>SELECT count(*) 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+ORDER BY first_name DESC</string>
 		<string>SELECT * 
 FROM employees
 WHERE birth_date LIKE '%12-25%' 
@@ -267,38 +291,6 @@ WHERE birth_date LIKE '%12-25%'
 	)
 ORDER BY birth_date ASC, hire_date DESC
 limit 5 offset 1</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 11</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 5</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 0</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
