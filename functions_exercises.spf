@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>employees</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>8585567200859066507</string>
+			<key>name</key>
+			<string>Vagrant Codeup MySQL</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>ssh_host</key>
+			<string>192.168.77.77</string>
+			<key>ssh_keyLocation</key>
+			<string></string>
+			<key>ssh_keyLocationEnabled</key>
+			<integer>0</integer>
+			<key>ssh_user</key>
+			<string>vagrant</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPSSHTunnelConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>codeup</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>utf8</string>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClZlbXBfbm/SHh8tLl8Q
+			D05TTXV0YWJsZVN0cmluZ6MtLyNYTlNTdHJpbmfSHh8xMl5OU011
+			dGFibGVBcnJheaMxMyNXTlNBcnJhedIeHyI1oiIjXxAPTlNLZXll
+			ZEFyY2hpdmVy0Tg5VGRhdGGAAQAIABEAGgAjAC0AMgA3AEUASwBS
+			AFoAZQBsAHAAcgB0AHYAegB8AH4AgACCAIcAjACRALoAwQDCAMMA
+			xQDKANUA3gD0APgBBQEOARMBFQEXARkBHgEoASoBMQE2AUgBTAFV
+			AVoBaQFtAXUBegF9AY8BkgGXAAAAAAAAAgEAAAAAAAAAOgAAAAAA
+			AAAAAAAAAAAAAZk=
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {694, 450}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>SELECT * 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+ORDER BY first_name DESC;
+
+SELECT * 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+ORDER BY first_name DESC, last_name DESC;
+
+SELECT * 
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+ORDER BY last_name DESC, first_name DESC;
+
+SELECT * 
+FROM employees
+WHERE last_name LIKE 'E%'
+OR last_name LIKE '%E'
+ORDER BY emp_no DESC;
+
+SELECT * 
+FROM employees
+WHERE last_name LIKE 'E%'
+OR last_name LIKE '%E'
+ORDER BY emp_no DESC;
+
+SELECT * 
+FROM employees
+WHERE last_name LIKE 'E%'
+AND last_name LIKE '%E'
+ORDER BY emp_no DESC;
+
+SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC;</string>
+			<key>table</key>
+			<string>employees</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>200</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 45</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 50</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 55</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 30</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 25</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 22</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 20</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 18</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 15</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 7</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 6</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 60</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 40</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 10</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 1</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 11</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 5</string>
+		<string>SELECT * 
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC
+limit 5 offset 0</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.5.44-0ubuntu0.14.04.1-log</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>
