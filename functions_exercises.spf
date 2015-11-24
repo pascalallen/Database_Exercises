@@ -116,7 +116,7 @@ FROM employees
 WHERE last_name LIKE 'E%'
 AND last_name LIKE '%E';
 
-SELECT * 
+SELECT datediff(curdate(), hire_date)
 FROM employees
 WHERE birth_date LIKE '%12-25%' 
 	AND(
@@ -139,6 +139,20 @@ ORDER BY birth_date ASC, hire_date DESC;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>SELECT datediff(curdate(), hire_date)
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC</string>
+		<string>SELECT datediff(hire_date, curdate())
+FROM employees
+WHERE birth_date LIKE '%12-25%' 
+	AND(
+		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+	)
+ORDER BY birth_date ASC, hire_date DESC</string>
 		<string>SELECT concat(first_name, ', ', last_name)
 FROM employees
 WHERE last_name LIKE 'E%'
@@ -257,22 +271,6 @@ WHERE birth_date LIKE '%12-25%'
 	)
 ORDER BY birth_date ASC, hire_date DESC
 limit 5 offset 15</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 7</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 6</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
