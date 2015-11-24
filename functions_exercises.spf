@@ -122,7 +122,14 @@ WHERE birth_date LIKE '%12-25%'
 	AND(
 		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
 	)
-ORDER BY birth_date ASC, hire_date DESC;</string>
+ORDER BY birth_date ASC, hire_date DESC;
+
+select distinct first_name, last_name, count(*) as num
+from employees
+where last_name like '%q'
+and last_name not like '%qu%'
+group by first_name, last_name
+order by count(*) desc;</string>
 			<key>table</key>
 			<string>employees</string>
 			<key>view</key>
@@ -139,6 +146,38 @@ ORDER BY birth_date ASC, hire_date DESC;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select distinct first_name, last_name, count(*) as num
+from employees
+where last_name like '%q'
+and last_name not like '%qu%'
+group by first_name, last_name
+order by count(*) desc</string>
+		<string>select *
+from employees
+where last_name='q'
+and not last_name = 'qu'
+group by distinct first_name, last_name</string>
+		<string>select *
+from employees
+where last_name='q'
+and last_name =not 'qu'
+group by distinct first_name, last_name</string>
+		<string>select *
+from employees
+where last_name='q'
+and not 'qu'
+group by distinct first_name, last_name</string>
+		<string>select *
+from employees
+where last_name='q'
+and not 'qu'
+group by distint first_name, last_name</string>
+		<string>SELECT count(*), gender
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+group BY gender</string>
 		<string>SELECT datediff(curdate(), hire_date)
 FROM employees
 WHERE birth_date LIKE '%12-25%' 
@@ -168,12 +207,6 @@ FROM employees
 WHERE last_name LIKE 'E%'
 OR last_name LIKE '%E'
 concat(first_name, ', ', last_name)</string>
-		<string>SELECT count(*), gender
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-group BY gender</string>
 		<string>SELECT count(*) 
 FROM employees
 WHERE first_name ='Irena'
@@ -231,46 +264,6 @@ WHERE birth_date LIKE '%12-25%'
 	)
 ORDER BY birth_date ASC, hire_date DESC
 limit 5 offset 30</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 25</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 22</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 20</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 18</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 15</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
