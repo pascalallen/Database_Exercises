@@ -11,7 +11,7 @@
 		<key>connection</key>
 		<dict>
 			<key>database</key>
-			<string>employees</string>
+			<string>codeup_test_db</string>
 			<key>host</key>
 			<string>127.0.0.1</string>
 			<key>kcid</key>
@@ -57,21 +57,21 @@
 			<integer>1</integer>
 			<key>contentSelection</key>
 			<data>
-			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkfICEoLDA0OFUkbnVs
-			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
-			AoADgASjERITgAWABoAKgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
-			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
-			HB6hG4AHoR2ACIAJVTEwMDI3CdIiIyQlWiRjbGFzc25hbWVYJGNs
-			YXNzZXNfEBNOU011dGFibGVEaWN0aW9uYXJ5oyQmJ1xOU0RpY3Rp
-			b25hcnlYTlNPYmplY3TSCgspK6EqgAuADdILLS4vWU5TLnN0cmlu
-			Z4AMVmVtcF9ub9IiIzEyXxAPTlNNdXRhYmxlU3RyaW5nozEzJ1hO
-			U1N0cmluZ9IiIzU2Xk5TTXV0YWJsZUFycmF5ozU3J1dOU0FycmF5
-			0iIjJjmiJidfEA9OU0tleWVkQXJjaGl2ZXLRPD1UZGF0YYABAAgA
-			EQAaACMALQAyADcASQBPAFYAXgBpAHAAdAB2AHgAegB+AIAAggCE
-			AIYAiwCQAJUAvgDFAMcAyQDLAM0AzwDVANYA2wDmAO8BBQEJARYB
-			HwEkASYBKAEqAS8BOQE7AUIBRwFZAV0BZgFrAXoBfgGGAYsBjgGg
-			AaMBqAAAAAAAAAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAGq
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClJpZNIeHy0uXxAPTlNN
+			dXRhYmxlU3RyaW5noy0vI1hOU1N0cmluZ9IeHzEyXk5TTXV0YWJs
+			ZUFycmF5ozEzI1dOU0FycmF50h4fIjWiIiNfEA9OU0tleWVkQXJj
+			aGl2ZXLRODlUZGF0YYABAAgAEQAaACMALQAyADcARQBLAFIAWgBl
+			AGwAcAByAHQAdgB6AHwAfgCAAIIAhwCMAJEAugDBAMIAwwDFAMoA
+			1QDeAPQA+AEFAQ4BEwEVARcBGQEeASgBKgEtATIBRAFIAVEBVgFl
+			AWkBcQF2AXkBiwGOAZMAAAAAAAACAQAAAAAAAAA6AAAAAAAAAAAA
+			AAAAAAABlQ==
 			</data>
 			<key>contentSortColIsAsc</key>
 			<true/>
@@ -135,9 +135,29 @@ order by people_with_same_name desc;
 
 select concat(emp_no, ' ', '-', ' ', last_name, ' ', first_name) as full_name, birth_date as DOB
 from employees
-limit 10;</string>
+limit 10;
+
+show tables;
+
+describe departments;
+
+describe dept_emp;
+
+describe dept_manager;
+describe employees;
+describe salaries;
+describe titles;
+
+use codeup_test_db;
+
+alter table albums
+add UNIQUE(artist, name);
+
+describe albums;
+
+</string>
 			<key>table</key>
-			<string>employees</string>
+			<string>albums</string>
 			<key>view</key>
 			<string>SP_VIEW_CUSTOMQUERY</string>
 			<key>windowVerticalDividerPosition</key>
@@ -152,6 +172,24 @@ limit 10;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>alter table albums
+add UNIQUE(artist, name)</string>
+		<string>describe albums</string>
+		<string>alter table albums
+drop artist_2</string>
+		<string>alter table albums
+drop unique (artist, name)</string>
+		<string>alter table albums
+add unique (artist, name)</string>
+		<string>use codeup_test_db</string>
+		<string>describe dept_manager</string>
+		<string>describe dept_emp</string>
+		<string>describe departments</string>
+		<string>show tables</string>
+		<string>describe titles</string>
+		<string>describe employees</string>
+		<string>describe salaries</string>
+		<string>use employees</string>
 		<string>select concat(emp_no, ' ', '-', ' ', last_name, ' ', first_name) as full_name, birth_date as DOB
 from employees
 limit 10</string>
@@ -179,86 +217,6 @@ where last_name like '%q%'
 and last_name not like '%qu%'
 group by full_name
 order by count(*) desc</string>
-		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as num
-from employees
-where last_name like '%q%'
-and last_name not like '%qu%'
-group by full_name
-order by count(*) desc</string>
-		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as num
-from employees
-where last_name like '%q%'
-and last_name not like '%qu%'
-group by first_name, last_name
-order by count(*) desc</string>
-		<string>select distinct concat(first_name, last_name) as full_name, count(*) as num
-from employees
-where last_name like '%q%'
-and last_name not like '%qu%'
-group by first_name, last_name
-order by count(*) desc</string>
-		<string>select distinct first_name, last_name, count(*) as num
-from employees
-where last_name like '%q%'
-and last_name not like '%qu%'
-group by first_name, last_name
-order by count(*) desc</string>
-		<string>select distinct first_name, last_name, count(*) as num
-from employees
-where last_name like '%q'
-and last_name not like '%qu'
-group by first_name, last_name
-order by count(*) desc</string>
-		<string>select distinct first_name, last_name, count(*) as num
-from employees
-where last_name like '%q'
-and last_name not like '%qu%'
-group by first_name, last_name
-order by count(*) desc</string>
-		<string>SELECT count(*), gender
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-group BY gender</string>
-		<string>select *
-from employees
-where last_name='q'
-and not last_name = 'qu'
-group by distinct first_name, last_name</string>
-		<string>select *
-from employees
-where last_name='q'
-and last_name =not 'qu'
-group by distinct first_name, last_name</string>
-		<string>select *
-from employees
-where last_name='q'
-and not 'qu'
-group by distinct first_name, last_name</string>
-		<string>select *
-from employees
-where last_name='q'
-and not 'qu'
-group by distint first_name, last_name</string>
-		<string>SELECT datediff(curdate(), hire_date)
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC</string>
-		<string>SELECT datediff(hire_date, curdate())
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC</string>
-		<string>SELECT concat(first_name, ', ', last_name)
-FROM employees
-WHERE last_name LIKE 'E%'
-AND last_name LIKE '%E'</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
