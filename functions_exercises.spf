@@ -51,30 +51,32 @@
 		<dict>
 			<key>connectionEncoding</key>
 			<string>utf8</string>
+			<key>contentFilter</key>
+			<dict/>
 			<key>contentPageNumber</key>
 			<integer>1</integer>
 			<key>contentSelection</key>
 			<data>
-			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
-			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
-			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
-			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
-			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
-			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
-			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClZlbXBfbm/SHh8tLl8Q
-			D05TTXV0YWJsZVN0cmluZ6MtLyNYTlNTdHJpbmfSHh8xMl5OU011
-			dGFibGVBcnJheaMxMyNXTlNBcnJhedIeHyI1oiIjXxAPTlNLZXll
-			ZEFyY2hpdmVy0Tg5VGRhdGGAAQAIABEAGgAjAC0AMgA3AEUASwBS
-			AFoAZQBsAHAAcgB0AHYAegB8AH4AgACCAIcAjACRALoAwQDCAMMA
-			xQDKANUA3gD0APgBBQEOARMBFQEXARkBHgEoASoBMQE2AUgBTAFV
-			AVoBaQFtAXUBegF9AY8BkgGXAAAAAAAAAgEAAAAAAAAAOgAAAAAA
-			AAAAAAAAAAAAAZk=
+			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkfICEoLDA0OFUkbnVs
+			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
+			AoADgASjERITgAWABoAKgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
+			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
+			HB6hG4AHoR2ACIAJVTEwMDI3CdIiIyQlWiRjbGFzc25hbWVYJGNs
+			YXNzZXNfEBNOU011dGFibGVEaWN0aW9uYXJ5oyQmJ1xOU0RpY3Rp
+			b25hcnlYTlNPYmplY3TSCgspK6EqgAuADdILLS4vWU5TLnN0cmlu
+			Z4AMVmVtcF9ub9IiIzEyXxAPTlNNdXRhYmxlU3RyaW5nozEzJ1hO
+			U1N0cmluZ9IiIzU2Xk5TTXV0YWJsZUFycmF5ozU3J1dOU0FycmF5
+			0iIjJjmiJidfEA9OU0tleWVkQXJjaGl2ZXLRPD1UZGF0YYABAAgA
+			EQAaACMALQAyADcASQBPAFYAXgBpAHAAdAB2AHgAegB+AIAAggCE
+			AIYAiwCQAJUAvgDFAMcAyQDLAM0AzwDVANYA2wDmAO8BBQEJARYB
+			HwEkASYBKAEqAS8BOQE7AUIBRwFZAV0BZgFrAXoBfgGGAYsBjgGg
+			AaMBqAAAAAAAAAIBAAAAAAAAAD4AAAAAAAAAAAAAAAAAAAGq
 			</data>
 			<key>contentSortColIsAsc</key>
 			<true/>
 			<key>contentViewport</key>
-			<string>{{0, 0}, {694, 450}}</string>
+			<string>{{0, 0}, {748, 475}}</string>
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
@@ -124,12 +126,16 @@ WHERE birth_date LIKE '%12-25%'
 	)
 ORDER BY birth_date ASC, hire_date DESC;
 
-select distinct first_name, last_name, count(*) as num
+select concat(first_name, ' ', last_name) as full_name, count(*) as people_with_same_name
 from employees
-where last_name like '%q'
+where last_name like '%q%'
 and last_name not like '%qu%'
-group by first_name, last_name
-order by count(*) desc;</string>
+group by full_name
+order by people_with_same_name desc;
+
+select concat(emp_no, ' ', '-', ' ', last_name, ' ', first_name) as full_name, birth_date as DOB
+from employees
+limit 10;</string>
 			<key>table</key>
 			<string>employees</string>
 			<key>view</key>
@@ -146,12 +152,75 @@ order by count(*) desc;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select concat(emp_no, ' ', '-', ' ', last_name, ' ', first_name) as full_name, birth_date as DOB
+from employees
+limit 10</string>
+		<string>select concat(emp_no, ' ', '-', ' ', last_name, first_name) as full_name, birth_date as DOB
+from employees
+limit 10</string>
+		<string>select concat(employee_number, ' ', '-', ' ', last_name, first_name) as full_name, birth_date as DOB
+from employees
+limit 10</string>
+		<string>select concat(first_name, ' ', last_name) as full_name, count(*) as people_with_same_name
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by full_name
+order by people_with_same_name desc</string>
+		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as people_with_same_name
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by full_name
+order by people_with_same_name desc</string>
+		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as people_with_same_name
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by full_name
+order by count(*) desc</string>
+		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as num
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by full_name
+order by count(*) desc</string>
+		<string>select distinct concat(first_name, ' ', last_name) as full_name, count(*) as num
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by first_name, last_name
+order by count(*) desc</string>
+		<string>select distinct concat(first_name, last_name) as full_name, count(*) as num
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by first_name, last_name
+order by count(*) desc</string>
+		<string>select distinct first_name, last_name, count(*) as num
+from employees
+where last_name like '%q%'
+and last_name not like '%qu%'
+group by first_name, last_name
+order by count(*) desc</string>
+		<string>select distinct first_name, last_name, count(*) as num
+from employees
+where last_name like '%q'
+and last_name not like '%qu'
+group by first_name, last_name
+order by count(*) desc</string>
 		<string>select distinct first_name, last_name, count(*) as num
 from employees
 where last_name like '%q'
 and last_name not like '%qu%'
 group by first_name, last_name
 order by count(*) desc</string>
+		<string>SELECT count(*), gender
+FROM employees
+WHERE first_name ='Irena'
+OR first_name = 'Vidya'
+OR first_name = 'Maya'
+group BY gender</string>
 		<string>select *
 from employees
 where last_name='q'
@@ -172,12 +241,6 @@ from employees
 where last_name='q'
 and not 'qu'
 group by distint first_name, last_name</string>
-		<string>SELECT count(*), gender
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-group BY gender</string>
 		<string>SELECT datediff(curdate(), hire_date)
 FROM employees
 WHERE birth_date LIKE '%12-25%' 
@@ -196,74 +259,6 @@ ORDER BY birth_date ASC, hire_date DESC</string>
 FROM employees
 WHERE last_name LIKE 'E%'
 AND last_name LIKE '%E'</string>
-		<string>first_name, ', ', last_name</string>
-		<string>SELECT * 
-FROM employees
-WHERE last_name LIKE 'E%'
-AND last_name LIKE '%E'
-ORDER BY emp_no DESC</string>
-		<string>SELECT * 
-FROM employees
-WHERE last_name LIKE 'E%'
-OR last_name LIKE '%E'
-concat(first_name, ', ', last_name)</string>
-		<string>SELECT count(*) 
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-group BY gender</string>
-		<string>SELECT * 
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-ORDER BY first_name DESC, last_name DESC</string>
-		<string>SELECT count(*) 
-FROM employees
-WHERE first_name ='Irena'
-OR first_name = 'Vidya'
-OR first_name = 'Maya'
-ORDER BY first_name DESC</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 45</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 50</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 55</string>
-		<string>SELECT * 
-FROM employees
-WHERE birth_date LIKE '%12-25%' 
-	AND(
-		hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-	)
-ORDER BY birth_date ASC, hire_date DESC
-limit 5 offset 30</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
