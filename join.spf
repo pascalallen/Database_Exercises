@@ -139,7 +139,13 @@ select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'm
 from departments as d
 join dept_manager as dm on d.dept_no = dm.dept_no
 join employees as e on dm.emp_no = e.emp_no
-where dm.to_date &gt; now();</string>
+where dm.to_date &gt; now();
+
+select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where e.gender = 'F' and dm.to_date &gt; now();</string>
 			<key>table</key>
 			<string>employees</string>
 			<key>view</key>
@@ -156,6 +162,21 @@ where dm.to_date &gt; now();</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where e.gender = 'F' and dm.to_date &gt; now()</string>
+		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where e.gender = 'F'</string>
+		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where e.gender = F</string>
 		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
 from departments as d
 join dept_manager as dm on d.dept_no = dm.dept_no
@@ -207,15 +228,6 @@ from departments as d</string>
 		<string>select d.dept_name, dm.emp_no
 from departments as d
 from dept_manager as dm</string>
-		<string>use employees</string>
-		<string>select r.name, count(u.role_id) as 'users_with_roles'
-from users as u
-right join roles as r on r.id = u.role_id
-group by r.id</string>
-		<string>select r.name, COUNT(r.id), count(u.role_id)
-from users as u
-right join roles as r on r.id = u.role_id
-group by r.id</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
