@@ -11,7 +11,7 @@
 		<key>connection</key>
 		<dict>
 			<key>database</key>
-			<string>join_test_db</string>
+			<string>employees</string>
 			<key>host</key>
 			<string>127.0.0.1</string>
 			<key>kcid</key>
@@ -64,14 +64,14 @@
 			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
 			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
 			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
-			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClJpZNIeHy0uXxAPTlNN
-			dXRhYmxlU3RyaW5noy0vI1hOU1N0cmluZ9IeHzEyXk5TTXV0YWJs
-			ZUFycmF5ozEzI1dOU0FycmF50h4fIjWiIiNfEA9OU0tleWVkQXJj
-			aGl2ZXLRODlUZGF0YYABAAgAEQAaACMALQAyADcARQBLAFIAWgBl
-			AGwAcAByAHQAdgB6AHwAfgCAAIIAhwCMAJEAugDBAMIAwwDFAMoA
-			1QDeAPQA+AEFAQ4BEwEVARcBGQEeASgBKgEtATIBRAFIAVEBVgFl
-			AWkBcQF2AXkBiwGOAZMAAAAAAAACAQAAAAAAAAA6AAAAAAAAAAAA
-			AAAAAAABlQ==
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeAClZlbXBfbm/SHh8tLl8Q
+			D05TTXV0YWJsZVN0cmluZ6MtLyNYTlNTdHJpbmfSHh8xMl5OU011
+			dGFibGVBcnJheaMxMyNXTlNBcnJhedIeHyI1oiIjXxAPTlNLZXll
+			ZEFyY2hpdmVy0Tg5VGRhdGGAAQAIABEAGgAjAC0AMgA3AEUASwBS
+			AFoAZQBsAHAAcgB0AHYAegB8AH4AgACCAIcAjACRALoAwQDCAMMA
+			xQDKANUA3gD0APgBBQEOARMBFQEXARkBHgEoASoBMQE2AUgBTAFV
+			AVoBaQFtAXUBegF9AY8BkgGXAAAAAAAAAgEAAAAAAAAAOgAAAAAA
+			AAAAAAAAAAAAAZk=
 			</data>
 			<key>contentSortColIsAsc</key>
 			<true/>
@@ -131,9 +131,17 @@ right join roles as r on r.id = u.role_id;
 select r.name, count(u.role_id) as 'users_with_roles'
 from users as u
 right join roles as r on r.id = u.role_id
-group by r.id;</string>
+group by r.id;
+
+use employees;
+
+select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where dm.to_date &gt; now();</string>
 			<key>table</key>
-			<string>users</string>
+			<string>employees</string>
 			<key>view</key>
 			<string>SP_VIEW_CUSTOMQUERY</string>
 			<key>windowVerticalDividerPosition</key>
@@ -148,6 +156,58 @@ group by r.id;</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where dm.to_date &gt; now()</string>
+		<string>select d.dept_name, concat(e.first_name, ' ', e.last_name)
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where dm.to_date &gt; now()</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where dm.to_date &gt; now()</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d, 
+join dept_manager as dm on d.dept_no = dm.dept_no</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d, dept_manager as dm</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+join dept_manager as dm</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+join dept_manager as dm on dm.emp_no = d.dept_name</string>
+		<string>select d.dept_name, dm.emp_no, e.first_name
+from departments as d, dept_manager as dm, employees as e</string>
+		<string>select d.dept_name, dm.emp_no,  distinct e.first_name
+from departments as d, dept_manager as dm, employees as e</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d, dept_manager as dm
+join d.emp_no = dm.emp_no</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d, dept_manager as  distinct dm</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d, distinct dept_manager as dm</string>
+		<string>select d.dept_name
+from departments as d</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d</string>
+		<string>select d.dept_name, dm.emp_no
+from departments as d
+from dept_manager as dm</string>
+		<string>use employees</string>
 		<string>select r.name, count(u.role_id) as 'users_with_roles'
 from users as u
 right join roles as r on r.id = u.role_id
@@ -156,62 +216,6 @@ group by r.id</string>
 from users as u
 right join roles as r on r.id = u.role_id
 group by r.id</string>
-		<string>select COUNT(r.id), count(u.role_id)
-from users as u
-right join roles as r on r.id = u.role_id
-group by r.id</string>
-		<string>select *, COUNT(r.id), count(u.role_id)
-from users as u
-right join roles as r on r.id = u.role_id
-group by r.id</string>
-		<string>select *
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *
-from users as u
-join roles as r on r.id = u.role_id</string>
-		<string>select *
-from users as u
-left join roles as r on r.id = u.role_id</string>
-		<string>select *, COUNT(DISTINCT r.id), count(u.role_id)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *, COUNT(DISTINCT r.id), count(u)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *, COUNT(DISTINCT r.id)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *, COUNT(DISTINCT r)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *, COUNT(DISTINCT roles)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select count(*)
-from users as u
-right join roles as r on r.id = u.role_id</string>
-		<string>select *
-from users as u
-right join count(roles) as r on r.id = u.role_id</string>
-		<string>select *
-from users as u
-right join roles as r on count(r.id) = u.role_id</string>
-		<string>select u.id, u.name, u.email, r.name
-from users as u
-join roles as r on r.id = u.role_id</string>
-		<string>select u.id, u.name, u.email, r.name
-from users as u
-join roles as r on r.name</string>
-		<string>select u.id, u.name, u.email, r.name
-from users as u
-left join roles as r on r.name</string>
-		<string>select u.id, u.name, u.email, r.name
-from users as u
-right join roles as r on r.name</string>
-		<string>select u.id, u.name, u.email, r.name
-from users as u
-join roles as r on r.name as title</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
