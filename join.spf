@@ -51,8 +51,6 @@
 		<dict>
 			<key>connectionEncoding</key>
 			<string>utf8</string>
-			<key>contentFilter</key>
-			<dict/>
 			<key>contentPageNumber</key>
 			<integer>1</integer>
 			<key>contentSelection</key>
@@ -76,7 +74,7 @@
 			<key>contentSortColIsAsc</key>
 			<true/>
 			<key>contentViewport</key>
-			<string>{{0, 0}, {748, 475}}</string>
+			<string>{{0, 0}, {694, 450}}</string>
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
@@ -179,11 +177,9 @@ where hire_date in (
 	where emp_no = 101010
 );
 
-
-
-
-
-</string>
+select first_name, last_name
+from employees
+where first_name = 'Aamod';</string>
 			<key>table</key>
 			<string>dept_emp</string>
 			<key>view</key>
@@ -200,6 +196,16 @@ where hire_date in (
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select first_name, last_name
+from employees
+where first_name = 'Aamod'</string>
+		<string>select first_name, last_name
+from employees
+where hire_date in (
+	select hire_date
+	from employees
+	where emp_no = 101010
+)</string>
 		<string>select concat(e.first_name, ' ', e.last_name) as 'current_employees', d.dept_name as 'department', concat(managers.first_name, ' ', managers.last_name) as 'manager'
 from employees as e
 join dept_emp as de on e.emp_no = de.emp_no
@@ -218,13 +224,6 @@ join departments as d on de.dept_no = d.dept_no
 join dept_manager as dm on d.dept_no = dm.dept_no
 where de.to_date &gt; now()
 and dm.to_date &gt; now()</string>
-		<string>select first_name, last_name
-from employees
-where hire_date in (
-	select hire_date
-	from employees
-	where emp_no = 101010
-)</string>
 		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
 from departments as d
 join dept_manager as dm on d.dept_no = dm.dept_no
@@ -347,13 +346,6 @@ from employees as e
 join dept_emp as de on de.emp_no = e.emp_no
 join departments as d on d.`dept_no` = de.`dept_no` 
 left join dept_manager as dm on e.emp_no = dm.emp_no
-where de.to_date &gt; now()
-and dm.to_date &gt; now()</string>
-		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
-from employees as e
-right join dept_emp as de on de.emp_no = e.emp_no
-join departments as d on d.`dept_no` = de.`dept_no` 
-join dept_manager as dm on e.emp_no = dm.emp_no
 where de.to_date &gt; now()
 and dm.to_date &gt; now()</string>
 	</array>
