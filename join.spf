@@ -179,17 +179,7 @@ where hire_date in (
 	where emp_no = 101010
 );
 
-select concat(first_name, ' ', last_name) as 'Employee', 
-       d.dept_name as 'Department', 
-       (select concat(first_name, ' ', last_name)
-        from employees as e1
-        where e1.emp_no = dm.emp_no) as 'Manager'
-from employees as e
-join dept_emp as de on e.emp_no = de.emp_no
-join departments as d on de.dept_no = d.dept_no 
-join dept_manager as dm on d.dept_no = dm.dept_no
-where de.to_date &gt; now()
-and dm.to_date &gt; now();
+
 
 
 
@@ -210,20 +200,39 @@ and dm.to_date &gt; now();
 	<array/>
 	<key>queryHistory</key>
 	<array>
+		<string>select concat(e.first_name, ' ', e.last_name) as 'current_employees', d.dept_name as 'department', concat(managers.first_name, ' ', managers.last_name) as 'manager'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as managers on dm.emp_no = managers.emp_no
+where de.to_date &gt; now() and dm.to_date &gt; now()</string>
 		<string>select concat(first_name, ' ', last_name) as 'Employee', 
        d.dept_name as 'Department', 
-       (select concat(first_name, ' ', last_name) from employees as e1 where e1.emp_no = dm.emp_no) as 'Manager'
+       (select concat(first_name, ' ', last_name)
+        from employees as e1
+        where e1.emp_no = dm.emp_no) as 'Manager'
 from employees as e
 join dept_emp as de on e.emp_no = de.emp_no
 join departments as d on de.dept_no = d.dept_no 
 join dept_manager as dm on d.dept_no = dm.dept_no
 where de.to_date &gt; now()
 and dm.to_date &gt; now()</string>
+		<string>select first_name, last_name
+from employees
+where hire_date in (
+	select hire_date
+	from employees
+	where emp_no = 101010
+)</string>
+		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
+from departments as d
+join dept_manager as dm on d.dept_no = dm.dept_no
+join employees as e on dm.emp_no = e.emp_no
+where e.gender = 'F' and dm.to_date &gt; now()</string>
 		<string>select concat(first_name, ' ', last_name) as 'Employee', 
        d.dept_name as 'Department', 
-       (select concat(first_name, ' ', last_name)
-        from employees as e1
-        where e1.emp_no = dm.emp_no) as 'Manager'
+       (select concat(first_name, ' ', last_name) from employees as e1 where e1.emp_no = dm.emp_no) as 'Manager'
 from employees as e
 join dept_emp as de on e.emp_no = de.emp_no
 join departments as d on de.dept_no = d.dept_no 
@@ -343,28 +352,6 @@ and dm.to_date &gt; now()</string>
 		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
 from employees as e
 right join dept_emp as de on de.emp_no = e.emp_no
-join departments as d on d.`dept_no` = de.`dept_no` 
-join dept_manager as dm on e.emp_no = dm.emp_no
-where de.to_date &gt; now()
-and dm.to_date &gt; now()</string>
-		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
-from employees as e
-left join dept_emp as de on de.emp_no = e.emp_no
-join departments as d on d.`dept_no` = de.`dept_no` 
-join dept_manager as dm on e.emp_no = dm.emp_no
-where de.to_date &gt; now()
-and dm.to_date &gt; now()</string>
-		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
-from employees as e
-join dept_emp as de on de.emp_no = e.emp_no
-join departments as d on d.`dept_no` = de.`dept_no` 
-join dept_manager as dm on e.emp_no = dm.emp_no
-where de.to_date &gt; now()
-and dm.to_date &gt; now()</string>
-		<string>select e.emp_no, d.dept_name, dm.emp_no, dm.
--- concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
-from employees as e
-join dept_emp as de on de.emp_no = e.emp_no
 join departments as d on d.`dept_no` = de.`dept_no` 
 join dept_manager as dm on e.emp_no = dm.emp_no
 where de.to_date &gt; now()
