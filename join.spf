@@ -57,22 +57,21 @@
 			<integer>1</integer>
 			<key>contentSelection</key>
 			<data>
-			YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFy
-			Y2hpdmVyVCR0b3ASAAGGoK8QDwcIFRYXGBkdJCouMjU4PFUkbnVs
-			bNMJCgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+A
-			AoADgASjERITgAWABoAIgA5UdHlwZVRyb3dzVGtleXNfECZTZWxl
-			Y3Rpb25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsa
-			GxygoIAH0h4fICFaJGNsYXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0
-			YWJsZURpY3Rpb25hcnmjICIjXE5TRGljdGlvbmFyeVhOU09iamVj
-			dNIKCyUpoyYnKIAJgAuADIAN0gsrLC1ZTlMuc3RyaW5ngApWZW1w
-			X25v0h4fLzBfEA9OU011dGFibGVTdHJpbmejLzEjWE5TU3RyaW5n
-			0gsrLDSAClV0aXRsZdILKyw3gApZZnJvbV9kYXRl0h4fOTpeTlNN
-			dXRhYmxlQXJyYXmjOTsjV05TQXJyYXnSHh8iPaIiI18QD05TS2V5
-			ZWRBcmNoaXZlctFAQVRkYXRhgAEACAARABoAIwAtADIANwBJAE8A
-			VgBeAGkAcAB0AHYAeAB6AH4AgACCAIQAhgCLAJAAlQC+AMUAxgDH
-			AMkAzgDZAOIA+AD8AQkBEgEXARsBHQEfASEBIwEoATIBNAE7AUAB
-			UgFWAV8BZAFmAWwBcQFzAX0BggGRAZUBnQGiAaUBtwG6Ab8AAAAA
-			AAACAQAAAAAAAABCAAAAAAAAAAAAAAAAAAABwQ==
+			YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK4HCBUWFxgZHSQpLTE0OFUkbnVsbNMJ
+			CgsMEBRXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6MNDg+AAoAD
+			gASjERITgAWABoAIgA1UdHlwZVRyb3dzVGtleXNfECZTZWxlY3Rp
+			b25EZXRhaWxUeXBlUHJpbWFyeUtleWVkRGV0YWlsc9MJCgsaGxyg
+			oIAH0h4fICFaJGNsYXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJs
+			ZURpY3Rpb25hcnmjICIjXE5TRGljdGlvbmFyeVhOU09iamVjdNIK
+			CyUooiYngAmAC4AM0gsqKyxZTlMuc3RyaW5ngApWZW1wX25v0h4f
+			Li9fEA9OU011dGFibGVTdHJpbmejLjAjWE5TU3RyaW5n0gsqKzOA
+			CldkZXB0X25v0h4fNTZeTlNNdXRhYmxlQXJyYXmjNTcjV05TQXJy
+			YXnSHh8iOaIiI18QD05TS2V5ZWRBcmNoaXZlctE8PVRkYXRhgAEA
+			CAARABoAIwAtADIANwBGAEwAUwBbAGYAbQBxAHMAdQB3AHsAfQB/
+			AIEAgwCIAI0AkgC7AMIAwwDEAMYAywDWAN8A9QD5AQYBDwEUARcB
+			GQEbAR0BIgEsAS4BNQE6AUwBUAFZAV4BYAFoAW0BfAGAAYgBjQGQ
+			AaIBpQGqAAAAAAAAAgEAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAaw=
 			</data>
 			<key>contentSortColIsAsc</key>
 			<true/>
@@ -168,9 +167,35 @@ join dept_emp as de on e.emp_no = de.emp_no
 join departments as d on de.dept_no = d.dept_no
 join dept_manager as dm on d.dept_no = dm.dept_no
 join employees as managers on dm.emp_no = managers.emp_no
-where de.to_date &gt; now() and dm.to_date &gt; now();</string>
+where de.to_date &gt; now() and dm.to_date &gt; now();
+
+USE employees;
+
+select first_name, last_name
+from employees
+where hire_date in (
+	select hire_date
+	from employees
+	where emp_no = 101010
+);
+
+select concat(first_name, ' ', last_name) as 'Employee', 
+       d.dept_name as 'Department', 
+       (select concat(first_name, ' ', last_name)
+        from employees as e1
+        where e1.emp_no = dm.emp_no) as 'Manager'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now();
+
+
+
+</string>
 			<key>table</key>
-			<string>titles</string>
+			<string>dept_emp</string>
 			<key>view</key>
 			<string>SP_VIEW_CUSTOMQUERY</string>
 			<key>windowVerticalDividerPosition</key>
@@ -185,102 +210,165 @@ where de.to_date &gt; now() and dm.to_date &gt; now();</string>
 	<array/>
 	<key>queryHistory</key>
 	<array>
-		<string>select concat(e.first_name, ' ', e.last_name) as 'current_employees', d.dept_name as 'department', concat(managers.first_name, ' ', managers.last_name) as 'manager'
+		<string>select concat(first_name, ' ', last_name) as 'Employee', 
+       d.dept_name as 'Department', 
+       (select concat(first_name, ' ', last_name) from employees as e1 where e1.emp_no = dm.emp_no) as 'Manager'
 from employees as e
 join dept_emp as de on e.emp_no = de.emp_no
-join departments as d on de.dept_no = d.dept_no
+join departments as d on de.dept_no = d.dept_no 
 join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as managers on dm.emp_no = managers.emp_no
-where de.to_date &gt; now() and dm.to_date &gt; now()</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager', s.salary as 'salary'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-join salaries as s on dm.emp_no = s.emp_no
-where dm.to_date &gt; now() and s.to_date &gt; now()</string>
-		<string>select t.title as 'Title', count(de.emp_no) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-join departments as d on d.dept_no = de.dept_no
-where dept_name = 'Customer Service' and t.to_date &gt; now() and de.to_date &gt; now()
-group by t.title</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-where e.gender = 'F' and dm.to_date &gt; now()</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-where dm.to_date &gt; now()</string>
-		<string>use employees</string>
-		<string>select r.name, count(u.role_id) as 'users_with_roles'
-from users as u
-right join roles as r on r.id = u.role_id
-group by r.id</string>
-		<string>use join_test_db</string>
-		<string>select concat(e.first_name, ' ', e.last_name) as 'current_employees'
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'Employee', 
+       d.dept_name as 'Department', 
+       (select concat(first_name, ' ', last_name)
+        from employees as e1
+        where e1.emp_no = dm.emp_no) as 'Manager'
 from employees as e
 join dept_emp as de on e.emp_no = de.emp_no
-join departments as d on de.dept_no = d.dept_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'Employee', 
+       d.dept_name as 'Department', 
+       (select concat(first_name, ' ', last_name)
+        from employees e1
+        where e1.emp_no = dm.emp_no) as 'Manager'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'Employee', 
+       d.dept_name as 'Department', 
+       (select concat(first_name, ' ', last_name)
+        from employees e1
+        where e1.emp_no = dm.emp_no) as 'Manager'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+-- join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'Emp_Name', d.dept_name, (select concat(first_name, ' ', last_name)
+from employees e1
+where e1.emp_no = dm.emp_no) as 'mgr_name'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, (select concat(first_name, ' ', last_name)
+from employees e1
+where e1.emp_no = dm.emp_no) as 'mgr_name'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, (select concat(first_name, ' ', last_name)
+from dept_manager dm1
+where e.emp_no = dm1.emp_no) as 'mgr_name'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, (select concat(first_name, ' ', last_name)
+from dept_manager dm
+where e.emp_no = dm.emp_no) as 'mgr_name'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'mgr_name'
+from employees e,
+dept_manager dm
+where e.emp_no = dm.emp_no
+and dm.`to_date` &gt; now()</string>
+		<string>select *
+from employees e,
+dept_manager dm
+where e.emp_no = dm.emp_no
+and dm.`to_date` &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no` as 'mgr_emp_no'
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on e.emp_no = de.emp_no
+join departments as d on de.dept_no = d.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.dept_no = de.dept_no 
+join dept_manager as dm on d.dept_no = dm.dept_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.dept_no = de.dept_no 
 join dept_manager as dm on e.emp_no = dm.emp_no
-where de.to_date &gt; now()</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-join salaries as s on dm.emp_no = s.emp_no
-where dm.to_date &gt; now() and s.to_date &gt; now()</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager', 'salary'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-join salaries as s on dm.emp_no = s.emp_no
-where dm.to_date &gt; now() and s.to_date &gt; now()</string>
-		<string>select d.dept_name as 'department', concat(e.first_name, ' ', e.last_name) as 'manager', salaries as 'salary'
-from departments as d
-join dept_manager as dm on d.dept_no = dm.dept_no
-join employees as e on dm.emp_no = e.emp_no
-join salaries as s on dm.emp_no = s.emp_no
-where dm.to_date &gt; now() and s.to_date &gt; now()</string>
-		<string>select t.title as 'Title', count(de.emp_no) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-join departments as d on d.dept_no = de.dept_no
-where dept_name = 'Customer Service' and t.to_date &gt; now()
-group by t.title</string>
-		<string>select t.title as 'Title', count(de.emp_no) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-join departments as d on d.dept_no = de.dept_no
-where dept_name = 'Customer Service'
-group by t.title</string>
-		<string>select t.title as 'Title', count(de.emp_no) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-join departments as d on d.dept_no = de.dept_no
-where dept_name = 'Customer Service'</string>
-		<string>select t.title as 'Title', count(de.emp_no) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-where dept_name = 'Customer Service'</string>
-		<string>select t.title as 'Title'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-where dept_name = 'Customer Service'</string>
-		<string>) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-where</string>
-		<string>select t.title as 'Title', count(distinct ) as 'Count'
-from titles as t
-join dept_emp as de on de.emp_no = t.emp_no
-where dept_name = 'Customer Service'</string>
-		<string>select t.title as 'Title', count(distinct ) as 'Count'
-from titles as t
-join dept_emp as de
-where de.dept_no = 'd009'</string>
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+right join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+left join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+right join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+left join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
+		<string>select e.emp_no, d.dept_name, dm.emp_no, dm.
+-- concat(first_name, ' ', last_name) as 'name', d.dept_name, dm.`emp_no`
+from employees as e
+join dept_emp as de on de.emp_no = e.emp_no
+join departments as d on d.`dept_no` = de.`dept_no` 
+join dept_manager as dm on e.emp_no = dm.emp_no
+where de.to_date &gt; now()
+and dm.to_date &gt; now()</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>
